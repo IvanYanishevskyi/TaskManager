@@ -1,0 +1,110 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+<div class="d-flex justify-content-center align-items-center" style="min-height: 100vh;">
+    <form class="text-center" style="width: 100%; max-width: 330px; padding: 15px; margin: auto;" action="{{ path('store') }}" method="POST">
+        <h1 class="h3 mb-3 fw-normal">Registration <i class="bi bi-box-arrow-in-right"></i></h1>
+
+        {% for label, messages in app.flashes %}
+        {% for message in messages %}
+        <div class="alert alert-{{ label }}">
+            {{ message }}
+        </div>
+        {% endfor %}
+        {% endfor %}
+
+        <div class="form-floating mb-3">
+            <input type="text" class="form-control" id="name" name="name" placeholder="Имя" required>
+            <label for="name">Name</label>
+        </div>
+
+        <div class="form-floating mb-3">
+            <input type="email" class="form-control" id="floatingInput" name="floatingInput" placeholder="name@example.com" required>
+            <label for="floatingInput">Email</label>
+        </div>
+
+        <div class="form-floating mb-3">
+            <input type="password" class="form-control" id="floatingPassword" name="floatingPassword" placeholder="Password" required minlength="7">
+            <label for="floatingPassword">Password</label>
+        </div>
+
+        <div class="form-floating mb-3">
+            <input type="password" class="form-control" id="floatingPasswordConf" name="floatingPasswordConf" placeholder="Password confirmation" required minlength="7">
+            <label for="floatingPasswordConf">Password confirmation</label>
+        </div>
+
+        <div class="form-floating mb-3">
+            <button class="btn btn-outline-danger w-100" type="submit">Register</button>
+        </div>
+
+        <a href="{{ path('login-page') }}" class="btn btn-outline-danger w-100">Already registered?</a>
+    </form>
+</div>
+
+<style>
+    /* Основные стили для формы */
+    .form-control {
+        border-radius: 0.25rem;
+    }
+
+    .btn {
+        padding: 0.75rem 1rem;
+    }
+
+    /* Адаптивность для мобильных устройств */
+    @media (max-width: 576px) {
+        .form-control {
+            padding: 0.5rem 0.75rem;
+        }
+
+        .btn {
+            font-size: 1rem;
+        }
+
+        h1.h3 {
+            font-size: 1.5rem;
+        }
+
+        .form-floating label {
+            padding-left: 0.75rem;
+        }
+    }
+    @media (max-width: 400px) {
+        .form-floating label {
+            font-size: 0.875rem;
+        }
+
+        .btn {
+            font-size: 0.875rem;
+            padding: 0.5rem 0.75rem;
+        }
+
+        h1.h3 {
+            font-size: 1.25rem;
+        }
+    }
+    @media (max-width: 768px) {
+        h1.display-4 {
+            font-size: 2rem;
+        }
+        h2.lead {
+            font-size: 1rem;
+        }
+    }
+
+    @media (max-width: 576px) {
+        h1.display-4 {
+            font-size: 1.75rem;
+        }
+        h2.lead {
+            font-size: 0.9rem;
+        }
+        .btn {
+            width: 100%;
+            font-size: 0.9rem;
+        }
+    }
+</style>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-4sSRHc5W3IzlTT32wQSkK6Rbqf1DpK5d3nS9f5g9wGe4EjAqIBz71Yx6Qg/G2rKQ" crossorigin="anonymous"></script>
+{% endblock %}

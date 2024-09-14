@@ -1,0 +1,38 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+<div class="d-flex flex-column justify-content-center align-items-center text-center" style="min-height: calc(100vh - 100px); padding-top: -20px; position: relative;">
+    <div style="position: relative; z-index: 2; padding: 20px;">
+        <h1 class="display-4 font-weight-bold mb-3" style="font-size: 2.5rem; line-height: 1.2;">Organize your work and your life.</h1>
+        <h2 class="lead" style="font-size: 1.2rem; color: #6c757d;">Simplify life for yourself and your team.</h2>
+        <h2 class="lead" style="font-size: 1.2rem; color: #6c757d;">The world's #1 task manager and to-do list</h2>
+        <a href="{{ path('todo-page') }}" class="btn btn-danger btn-lg mt-4">Open ToDo</a>
+    </div>
+</div>
+
+<style>
+    @media (max-width: 768px) {
+        h1.display-4 {
+            font-size: 2rem;
+        }
+        h2.lead {
+            font-size: 1rem;
+        }
+    }
+
+    @media (max-width: 576px) {
+        h1.display-4 {
+            font-size: 1.75rem;
+        }
+        h2.lead {
+            font-size: 0.9rem;
+        }
+        .btn {
+            width: 100%;
+            font-size: 0.9rem;
+        }
+    }
+</style>
+
+{% endblock %}

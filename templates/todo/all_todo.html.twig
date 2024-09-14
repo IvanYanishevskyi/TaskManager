@@ -1,0 +1,44 @@
+{% extends 'todobase.html.twig' %}
+
+{% block body %}
+<h1>Your tasks.</h1>
+
+{% set todayTasks = tasks|filter(task => task.date and task.date|date('Y-m-d') == "now"|date('Y-m-d')) %}
+
+{% if todayTasks is empty %}
+<p>You have no tasks for today.</p>
+{% else %}
+<div class="task-list">
+    {% for task in todayTasks %}
+    <div class="task-card">
+        <div class="task-content">
+            <div class="task-header">
+                <h5>{{ task.name }}</h5>
+                <p class="hidden-date">Creation date: {{ task.createAt|date('Y-m-d H:i') }}</p>
+            </div>
+            <div class="task-body">
+                <p>{{ task.description }}</p>
+                <p class="text-muted">
+                    <span class="text-success">Today</span>
+                </p>
+            </div>
+            <div class="task-footer">
+                <div class="btn-group">
+                    <a href="{{ path('edit_task', { id: task.id }) }}" class="btn btn-sm btn-outline-secondary">
+                        <i class="bi bi-pen"></i>
+                    </a>
+                    <form action="{{ path('delete-task') }}" method="post">
+                        <input type="hidden" name="id" value="{{ task.id }}">
+                        <input type="hidden" name="page" value="today-tasks">
+                        <button type="submit" class="btn btn-sm btn-outline-danger">
+                            <i class="bi bi-trash3"></i>
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+{% endif %}
+{% endblock %}

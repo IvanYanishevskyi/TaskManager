@@ -1,0 +1,121 @@
+{% extends 'base.html.twig' %}
+{% block body %}
+<div class="d-flex justify-content-center align-items-center" style="min-height: 100vh;">
+  <form class="text-center" style="width: 100%; max-width: 330px; padding: 15px; margin: auto;" action="{{  path('login-process') }}" method="post">
+    <h1 class="h3 mb-3 fw-normal">Login <i class="bi bi-box-arrow-in-right"></i></h1>
+
+    <div class="form-floating mb-3">
+      <input type="email" class="form-control" id="floatingInput" name="floatingInput" placeholder="name@example.com" required>
+      <label for="floatingInput">Email</label>
+    </div>
+    <div class="form-floating mb-3">
+      <input type="password" class="form-control" id="floatingPassword" name="floatingPassword" placeholder="Password" required>
+      <label for="floatingPassword">Password</label>
+    </div>
+
+    {% for label, messages in app.flashes %}
+    {% for message in messages %}
+    <div class="alert alert-{{ label }}">
+      {{ message }}
+    </div>
+    {% endfor %}
+    {% endfor %}
+
+    <div class="form-floating mb-3">
+      <button class="btn btn-outline-danger w-100 me-2" type="submit">Login</button>
+    </div>
+    <a href="{{path('registration-page')}}"><button class="btn btn-outline-danger w-100 me-2" type="button">Register</button></a>
+  </form>
+</div>
+
+<style>
+  /* Основные стили для формы */
+  .form-control {
+    border-radius: 0.25rem;
+  }
+
+  .btn {
+    padding: 0.75rem 1rem;
+  }
+
+  /* Адаптивность для мобильных устройств */
+  @media (max-width: 576px) {
+    .form-control {
+      padding: 0.5rem 0.75rem;
+    }
+
+    .btn {
+      font-size: 1rem;
+    }
+
+    h1.h3 {
+      font-size: 1.5rem;
+    }
+
+    .form-floating label {
+      padding-left: 0.75rem;
+    }
+  }
+
+  /* Дополнительные стили для более узких экранов */
+  @media (max-width: 400px) {
+    .form-floating label {
+      font-size: 0.875rem;
+    }
+
+    .btn {
+      font-size: 0.875rem;
+      padding: 0.5rem 0.75rem;
+    }
+
+    h1.h3 {
+      font-size: 1.25rem;
+    }
+  }
+</style>
+<style>
+  @media (max-width: 768px) {
+    h1.display-4 {
+      font-size: 2rem;
+    }
+    h2.lead {
+      font-size: 1rem;
+    }
+  }
+
+  @media (max-width: 576px) {
+    h1.display-4 {
+      font-size: 1.75rem;
+    }
+    h2.lead {
+      font-size: 0.9rem;
+    }
+    .btn {
+      width: 100%;
+      font-size: 0.9rem;
+    }
+  }
+  @media (max-width: 768px) {
+    h1.display-4 {
+      font-size: 2rem;
+    }
+    h2.lead {
+      font-size: 1rem;
+    }
+  }
+
+  @media (max-width: 576px) {
+    h1.display-4 {
+      font-size: 1.75rem;
+    }
+    h2.lead {
+      font-size: 0.9rem;
+    }
+    .btn {
+      width: 100%;
+      font-size: 0.9rem;
+    }
+  }
+</style>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+{% endblock %}
