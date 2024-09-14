@@ -20,10 +20,10 @@ class RegisterController extends AbstractController
             'email' => $email
         ]);
         if ($existingUser){
-            $this->addFlash('erorr', 'Пользователь с такой почтой уже зарегестрирован!');
+            $this->addFlash('erorr', 'User with this email is already registered');
         }
         if ($password !== $passwordConf) {
-            $this->addFlash('error', 'Пароли не совпадают!');
+            $this->addFlash('error', 'Passwords are not equal');
             return $this->render('/login_register/register.html.twig');
         } else {
             $hashedpass = password_hash($password, PASSWORD_DEFAULT);
@@ -35,7 +35,7 @@ class RegisterController extends AbstractController
             $entityManager->persist($user);
             $entityManager->flush();
 
-            $this->addFlash('success', 'Регистрация прошла успешно');
+            $this->addFlash('success', 'Registration success');
 
             $session = $request->getSession();
             $session->set('username', $username);
